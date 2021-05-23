@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Diabetes prediction</title>
+
+  
+  
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="../css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+  <nav class="teal lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href='/' class="brand-logo">Diabetes Prediction</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/sugar'>Sugar Check</a></li>
+        <li><a href='/cardio'>Cardio Check</a></li>
+      </ul>
+
+  </nav>
+
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+     
+      <h1 class="header center materialize-red-text.text-lighten-3">Diabetes Prediction</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Predict the probability of having Diabetes
+        <br>
+        </h5>
+      </div>
+
+
+      <div class="row">
+        <form action='/predict' method="post" class="col s12">
+            <div class="row">
+                <div class="input-field col s4">
+                    <label for="first_name"><b>Pregnancies</b></label>
+                    <br>
+                    <input placeholder="No. of Pregnancies" name="1" id="first_name" type="text" class="validate">
+                </div>
+                <div class="input-field col s4">
+                    <label for="last_name"><b>Glucose ( mg/dl )</b></label>
+                    <br>
+                    <input id="last_name" name="2" placeholder="Glucose level in sugar"  type="text" class="validate">
+    
+                </div>
+                <div class="input-field col s4">
+                    <label for="last_name"><b>Insulin ( mu U/ml )</b></label>
+                    <br>
+                    <input id="last_name" name="3" placeholder="Insulin level"  type="text" class="validate">
+                </div>
+                
+                <div class="input-field col s4">
+                    <label for="last_name"><b>DiabetesPedigreeFunction</b></label>
+                    <br>
+                    <input id="last_name" name="4" placeholder="DiabetesPedigreeFunction"  type="text" class="validate">
+                </div>
+                <div class="input-field col s4">
+                    <label for="_name"><b>Age ( years )</b></label>
+                    <br>
+                    <input id="_name" name="5" placeholder="Age" type="text" class="validate">
+                </div>
+              
+<!--                <div class="input-field col s4">
+              <label for="active"><b>BMI ( kg/m**2 ) </b></label>
+              <br>
+              <input id="bmi" name="6" placeholder="Enter your BMI" type="text" class="validate">
+          </div> -->
+    
+          </div>
+    
+          <div class="row center">
+    
+              <button type="submit" class="btn-large waves-effect waves-light ">Predict Probability</button>
+
+          </div>
+        </form>
+  </div>
+
+      <br>
+
+     
+    <br><br>
+  </div>
+  </div>>
+
+  <footer class="page-footer  teal lighten-1" >
+    <div class="footer-copyright">
+      <div class="container" style="padding-bottom: 1rem; position: fixed; font-size: 1.2rem; margin-left: 5rem;">
+        <p>&copy; Group 6 RCOEM</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+
+  </body>
+</html>
+

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Cardio Vascular Disease Prediction</title>
+
+  
+  
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="../css/materialize.min.css">
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <style>
+  .styled-table {
+  
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 100px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+
+</style>
+
+</head>
+
+<body>
+  <nav class="teal lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href='/' class="brand-logo">Cardio Vascular Disease Prediction</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/sugar'>Sugar Check</a></li>
+        <li><a href='/cardio'>Cardio Check</a></li>
+      </ul>
+
+  </nav>
+
+
+
+
+
+      <!-- <div class="row" style="margin:5% 0% 2.5% 25%">
+            <h3 >{{pred}}</h3>
+      </div> -->
+      <div class="row"style="margin:5% 10% 5% 10%" >
+        <div class="cols s6">
+          <table class="styled-table">
+            <thead>
+                <tr>
+                    <th class="row center">Probability</th>
+                    <th class="row center">Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row center">{{prob}}</td>
+                    <td class="row center">{{percent}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        </div>
+        <div class="row center">
+          <a href='https://forms.gle/tK9YWgecRgzcyTsu9'><button type="submit" class="btn-large waves-effect waves-light ">Generate Report</button></a>
+        </div>
+       </div>
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="data:image/jpeg;base64,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">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Know your risk.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Know your risk.<i class="material-icons right">close</i></span>
+              <p>If you’re between 40 and 75 years old and have never had a heart attack or stroke, use our Check. Change. Control. CalculatorTM to estimate your risk of having a cardiovascular event in the next 10 years. Certain factors can increase your risk, such as smoking, kidney disease or a family history of early heart disease. Knowing your risk factors can help you and your health care team decide on the best treatment plan for you. Many risk factors can be improved with lifestyle changes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Eat a healthy diet.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Eat a healthy diet.<i class="material-icons right">close</i></span>
+              <p>Center your eating plan around vegetables, fruits, whole grains, legumes, nuts, plant-based proteins, lean animal proteins and fish. Make smart choices like limiting refined carbohydrates, processed meats and sweetened drinks. Use the nutrition facts label on packaged foods to cut back on sodium, added sugars and saturated fats, and avoid trans fat.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.pexels.com/photos/6815738/pexels-photo-6815738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Be physically active.</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Be physically active.<i class="material-icons right">close</i></span>
+              <p>Move more – it’s one of the best ways to stay healthy, prevent disease and age well. Adults should get at least 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous activity each week. If you’re already active, you can increase your intensity for even more benefits. If you’re not active now, get started by simply sitting less and moving more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.aidsmap.com/sites/default/files/styles/aidsmap_medium_crop/public/2019-08/weight-gain-weight-loss.png?itok=GT91atCF">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Watch your weight.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Watch your weight.<i class="material-icons right">close</i></span>
+              <p>Stay at a healthy weight for you. Lose weight if you’re overweight or obese. Start by eating fewer calories and moving more. You can check your body mass index (BMI). If you need help, talk to your health care team about a weight loss plan.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.unsplash.com/photo-1590265718174-647698840b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Live tobacco-free.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Live tobacco-free.<i class="material-icons right">close</i></span>
+              <p>If you don’t smoke, vape or use tobacco products, don’t ever start. There’s no such thing as a safe tobacco product. If quitting smoking or tobacco is a challenge for you, ask your team for help to kick the habit using proven methods. Don’t just swap one tobacco source for another. And try to avoid secondhand smoke, too!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="data:image/jpeg;base64,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">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Manage conditions.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Manage conditions.<i class="material-icons right">close</i></span>
+              <p>If you have high blood pressure (hypertension), high cholesterol, high blood sugar, diabetes or other conditions that put you at greater risk, it’s very important to work with your health care team and make lifestyle changes. Many conditions can be prevented or managed by eating better, getting active, losing weight and quitting tobacco. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://i.natgeofe.com/n/34629480-a87e-4bb2-84b9-97437b37b344/MZ3092_150520_41411-crop.jpg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Take your medicine.</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Take your medicine.<i class="material-icons right">close</i></span>
+              <p>If you have a health condition, your doctor may prescribe statins or other medications to help control cholesterol, blood sugar and blood pressure. Take all medications as directed. But don’t take aspirin as a preventive measure unless your doctor tells you to. If you’ve never had a heart attack or stroke, a daily aspirin may not help you at all and could cause problems including risk of bleeding. If you’ve had a heart attack or stroke, your doctor may want you to take a low dose of aspirin to reduce your risk of having another. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://myofficein.ph/wp-content/uploads/2017/02/What-Should-Be-the-Traits-of-a-Good-Team-Player.jpg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b> Be a team player.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Be a team player.<i class="material-icons right">close</i></span>
+              <p>
+                Your health care team can help you reduce your risk of heart disease or stroke to live a longer, healthier life. Work together on your prevention plan. Ask questions, and be open about any challenges you may face in trying to make healthy changes. Stress, sleep, mental health, family situations, tobacco use, food access, social support and other issues all can affect your health and well-being.
+                </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    <br><br>
+  </div>
+  </div>>
+
+  <footer class="page-footer teal lighten-1" style="position: fixed;left: 0;bottom: 0; width: 100%;">
+    <div class="footer-copyright ">
+      <div class=""  style="padding-bottom: 1rem; position: fixed; font-size: 1.2rem; margin-left: 5rem;">
+        <p>&copy; Group 6 Rcoem 2022</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  </body>
+</html>
+

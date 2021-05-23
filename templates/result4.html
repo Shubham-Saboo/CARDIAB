@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Cardio Vascular Disease Prediction</title>
+
+  
+  
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="../css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <style>
+    .styled-table {
+    
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <nav class="teal lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href='/' class="brand-logo">Cardio Vascular Disease Prediction</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/sugar'>Sugar Check</a></li>
+        <li><a href='/cardio'>Cardio Check</a></li>
+      </ul>
+
+  </nav>
+
+
+
+
+
+      <!-- <div class="row" style="margin:5% 0% 2.5% 25%">
+            <h3 >{{pred}}</h3>
+      </div> -->
+      <div class="row"style="margin:5% 10% 5% 10%" >
+        <div class="cols s6">
+          <table class="styled-table">
+            <thead>
+                <tr>
+                    <th class="row center">Probability</th>
+                    <th class="row center">Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row center">{{prob}}</td>
+                    <td class="row center">{{percent}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        </div>
+        <div class="row center">
+          <a href='https://forms.gle/tK9YWgecRgzcyTsu9'><button type="submit" class="btn-large waves-effect waves-light ">Generate Report</button></a>
+        </div>
+       </div>
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_fresh_produce.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Expand your palate's palette.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Expand your palate's palette.<i class="material-icons right">close</i></span>
+              <p>Dietary guidelines recommend that half of what's on your plate at any meal be vegetables or fruits. But it's also important to mix things up. While all fruits and veggies are healthy, they don't all have the same nutrients. Give yourself the widest range of benefits by eating different-colored produce throughout the day.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.pexels.com/photos/1458671/pexels-photo-1458671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Less sugar, more water.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Less sugar, more water.<i class="material-icons right">close</i></span>
+              <p>It's a good idea to avoid added sugar in whatever you eat, yet soda, sports drinks, and energy drinks may be a bigger source than you realize. Some studies show that just a soft drink or two a day makes you 26% more likely to get type 2 diabetes. Sugary drinks have also been tied to heart attacks, gout, and obesity. Stay hydrated with water or, if you miss the fizz and taste, naturally flavored seltzer.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_walking_meeting.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Move more, sit less.</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Move more, sit less.<i class="material-icons right">close</i></span>
+              <p>That's the physical activity guidelines in a nutshell. While at least 150 minutes a week of moderate exercise is ideal, experts say that any movement is better than nothing. So make it a point to stand up more often and stretch, park a bit farther from your destination for extra steps, and explore new pastimes that will help put you in motion.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://miro.medium.com/max/3200/1*Uly8EBXpLKCzE_TiSx3r0g.jpeg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Get enough rest.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Get enough rest.<i class="material-icons right">close</i></span>
+              <p>Sleep is often low on the list in our nonstop society, but it's a must for good health. Chronic sleep deprivation raises the odds for heart disease, diabetes, stroke, obesity, and many other sicknesses. Getting your ZZZs also helps keep you safe: Driving while sleepy is just as bad as driving drunk. If you don't usually wake up feeling refreshed, try slipping into bed 15 minutes earlier every week until you do.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_stretching_woman.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Tame your stress.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Tame your stress.<i class="material-icons right">close</i></span>
+              <p>Everyone has stress; it's how you react to it that matters. When you often explode in anger, get stomachaches because you're nervous, or have trouble sleeping because you're anxious, it's time to make a change. Find a way to blow off steam, whether that's through exercise, meditation, or laughing with good friends. Still feeling overwhelmed? Make an appointment with a counselor or other mental health professional.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_wash_hands.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Wash your hands.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Follow a Very-Low-Carb Diet<i class="material-icons right">close</i></span>
+              <p>It's one of the easiest and most effective ways to avoid catching whatever contagious bugs are going around. The key is to be thorough: After you lather up with soap, scrub your palms, the backs of your hands, between your fingers, and under your nails for at least 20 seconds. That's about how long it should take you to sing "Happy Birthday" twice.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_wine_book.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Limit your drinking.</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Limit your drinking.<i class="material-icons right">close</i></span>
+              <p>It's true that moderate amounts of alcohol have been tied to some health benefits, like a lower risk of heart disease, but there are also serious downsides to drinking, such as a higher risk of cancer and liver disease. So you shouldn't start drinking for the sake of good health. When you do have alcohol, keep it to one drink per day if you're a woman or two if you're a man.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.unsplash.com/photo-1590265718174-647698840b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Steer clear of smoke.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Steer clear of smoke.<i class="material-icons right">close</i></span>
+              <p>
+                Smoking doesn't just hurt your lungs. It harms almost every organ in your body, making you a more likely target for cancer, heart disease, and other serious illnesses. Secondhand smoke is dangerous, too, and there's no amount that's "safe." If you live with a smoker, support them in quitting or at least ask them to take it outside.
+                </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_family_tree.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b> Map your family tree of health.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Map your family tree of health.<i class="material-icons right">close</i></span>
+              <p>A history with a disease doesn't guarantee your fate, but your genes do offer a clue about the health issues you might face. You may need to be screened more often or earlier for conditions that run in the family, especially when close relatives developed them at unusually young ages or several family members had them. Let your doctor know about any serious ailments your parents, siblings, and children have been diagnosed with.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_doctor_patient.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Check in with your doctor.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Check in with your doctor.<i class="material-icons right">close</i></span>
+              <p>While there's no one-size-fits-all time frame for seeing your primary care doctor (anywhere from annually to every 3 years might be OK), don't go AWOL. Regular visits can help you catch problems early, when they're easier to treat and often cure. Stay on top of tests like cholesterol checks, mammograms, and prostate cancer screenings.</p>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_prescriptions.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Use prescriptions correctly.</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Use prescriptions correctly.<i class="material-icons right">close</i></span>
+              <p>Missing doses or taking your medication at the wrong time can have serious consequences. According to the CDC, so-called "non-adherence" leads to 125,000 deaths every year. If you aren't taking your prescribed medicine because of side effects or other issues, talk to your doctor. Having trouble remembering? Put notes on your calendar or set alarm reminders on your phone or watch.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/checklist_stay_healthy_slideshow/1800ss_thinkstock_rf_flu_shot.jpg?resize=650px:*">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Stay up to date on vaccines.</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Stay up to date on vaccines.<i class="material-icons right">close</i></span>
+              <p>Grownups need shots, too. You should get a flu shot every year, but you may also be due for a tetanus booster, a shingles vaccine, or a shot to protect against pneumonia. Ask your doctor what you might be missing and when you should get it.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+      
+      
+      
+    
+    <br><br>
+  </div>
+  </div>>
+
+  <footer class="page-footer teal lighten-1" style="position: fixed;left: 0;bottom: 0; width: 100%;">
+    <div class="footer-copyright ">
+      <div class=""  style="padding-bottom: 1rem; position: fixed; font-size: 1.2rem; margin-left: 5rem;">
+        <p>&copy; Group 6 Rcoem 2022</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  </body>
+</html>
+

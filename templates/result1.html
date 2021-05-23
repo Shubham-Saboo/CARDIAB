@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Diabetes Prediction</title>
+
+  
+  
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="../css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    .styled-table {
+    
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 100px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <nav class="teal lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href='/' class="brand-logo">Diabetes Prediction</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href='/'>Home</a></li>
+        <li><a href='/sugar'>Sugar Check</a></li>
+        <li><a href='/cardio'>Cardio Check</a></li>
+      </ul>
+
+  </nav>
+
+
+
+
+
+      <!-- <div class="row" >
+            <h3 >{{pred}}</h3>
+      </div> -->
+      <div class="row"style="margin:5% 10% 5% 10%" >
+      <div class="cols s6">
+        <table class="styled-table">
+          <thead>
+              <tr>
+                  <th class="row center">Probability</th>
+                  <th class="row center">Percentage</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="row center">{{prob}}</td>
+                  <td class="row center">{{percent}}</td>
+              </tr>
+              
+          </tbody>
+      </table>
+      </div>
+      <div class="row center">
+        <a href='https://forms.gle/JDeezFmXqVc12PaC8'><button type="submit" class="btn-large waves-effect waves-light ">Generate Report</button></a>
+      </div>
+     </div>
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.mskcc.org/sites/default/files/styles/large/public/node/131320/3x2/sugar.jpg">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Cut Sugar and Refined Carbs From Your Diet</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Cut Sugar and Refined Carbs From Your Diet<i class="material-icons right">close</i></span>
+              <p>Eating foods high in refined carbs and sugar increases blood sugar and insulin levels, which may lead to diabetes over time. Avoiding these foods may help reduce your risk.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.pexels.com/photos/6815738/pexels-photo-6815738.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Work Out Regularly</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Work Out Regularly<i class="material-icons right">close</i></span>
+              <p>Performing physical activity on a regular basis can increase insulin secretion and sensitivity, which may help prevent the progression from prediabetes to diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.pexels.com/photos/1458671/pexels-photo-1458671.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Drink Water as Your Primary Beverage</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Drink Water as Your Primary Beverage<i class="material-icons right">close</i></span>
+              <p>Drinking water instead of other beverages may help control blood sugar and insulin levels, thereby reducing the risk of diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.aidsmap.com/sites/default/files/styles/aidsmap_medium_crop/public/2019-08/weight-gain-weight-loss.png?itok=GT91atCF">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Lose Weight If You’re Overweight or Obese</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Lose Weight If You’re Overweight or Obese<i class="material-icons right">close</i></span>
+              <p>Carrying excess weight, particularly in the abdominal area, increases the likelihood of developing diabetes. Losing weight may significantly reduce the risk of diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.unsplash.com/photo-1590265718174-647698840b8d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Quit Smoking</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Quit Smoking<i class="material-icons right">close</i></span>
+              <p>Smoking is strongly linked to the risk of diabetes, especially in heavy smokers. Quitting has been shown to reduce this risk over time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://cotozachoroba.pl/wp-content/uploads/2020/04/Dieta-ketogeniczna-1140x760.jpg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Follow a Very-Low-Carb Diet</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Follow a Very-Low-Carb Diet<i class="material-icons right">close</i></span>
+              <p>Following a ketogenic or very-low-carb diet can help keep blood sugar and insulin levels under control, which may protect against diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="http://www.intrainingsports.com/img/articles/portion-control.png">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Watch Portion Sizes</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> Watch Portion Sizes<i class="material-icons right">close</i></span>
+              <p>Avoiding large portion sizes can help reduce insulin and blood sugar levels and decrease the risk of diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.doctorponce.com/wp-content/uploads/2019/09/guia-inicio-de-actividad-f%C3%ADsica-y-ejercicio-prescolares-300x197.jpg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Avoid Sedentary Behaviors</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Avoid Sedentary Behaviors<i class="material-icons right">close</i></span>
+              <p>
+                Avoiding sedentary behaviors like excessive sitting has been shown to reduce your risk of getting diabetes.
+                </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.ultra106five.com/wp-content/uploads/2019/04/Fibre-And-Gut-Health.jpg">
+            </div>
+            <div class="card-content">
+              <span class="activator grey-text text-darken-4"><h6><b>Eat a High-Fiber Diet</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Eat a High-Fiber Diet<i class="material-icons right">close</i></span>
+              <p>Consuming a good fiber source at each meal can help prevent spikes in blood sugar and insulin levels, which may help reduce your risk of developing diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://www.carespot.com/wp-content/uploads/2019/06/alternative-sources-of-vitamin-d.jpg">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Optimize Vitamin D Levels</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Optimize Vitamin D Levels<i class="material-icons right">close</i></span>
+              <p>Consuming foods high in vitamin D or taking supplements can help optimize vitamin D blood levels, which can reduce your risk of diabetes.</p>
+            </div>
+          </div>
+        </div>
+        <!-- https://i.pinimg.com/236x/99/3d/0c/993d0cdf595a5b4b2c1a82899090e8c2--eating-healthy-healthy-eats.jpg -->
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.unsplash.com/photo-1492552085122-36706c238263?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1373&q=80">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Consider Taking Natural Herbs</b></h6> </span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Consider Taking Natural Herbs<i class="material-icons right">close</i></span>
+              <p>The herbs curcumin and berberine increase insulin sensitivity, reduce blood sugar levels and may help prevent diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://images.pexels.com/photos/734983/pexels-photo-734983.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+            </div>
+            <div class="card-content">
+              <span class=" activator grey-text text-darken-4"><h6><b>Drink Coffee or Tea</b></h6></span>
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Drink Coffee or Tea<i class="material-icons right">close</i></span>
+              <p>Drinking coffee or tea may help reduce blood sugar levels, increase insulin sensitivity and reduce the risk of diabetes.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+      
+      
+      
+    
+    <br><br>
+  </div>
+  </div>>
+
+  <footer class="page-footer teal lighten-1" style="position: fixed;left: 0;bottom: 0; width: 100%;">
+    <div class="footer-copyright ">
+      <div class=""  style="padding-bottom: 1rem; position: fixed; font-size: 1.2rem; margin-left: 5rem;">
+        <p>&copy; Group 6 Rcoem 2022</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  </body>
+</html>
+
